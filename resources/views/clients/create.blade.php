@@ -6,12 +6,17 @@
 
         <x-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('clients.store') }}" enctype="multipart/form-data">
             @csrf
 
             <div>
                 <x-label for="name" value="{{ __('Nome') }}" />
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            </div>
+
+            <div class="mt-4">
+                <x-label for="cpf" value="{{ __('CPF') }}" />
+                <x-input id="cpf" class="block mt-1 w-full" type="text" name="cpf" :value="old('cpf')" required autocomplete="cpf" />
             </div>
 
             <div class="mt-4">
@@ -27,6 +32,16 @@
             <div class="mt-4">
                 <x-label for="password_confirmation" value="{{ __('Confirme sua senha') }}" />
                 <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+            </div>
+
+            <div class="mt-4">
+                <x-label for="date_of_birth" value="{{ __('Data de Nascimento') }}" />
+                <x-input id="date_of_birth" class="block mt-1 w-full" type="date" name="date_of_birth" :value="old('date_of_birth')" required autocomplete="bdate" />
+            </div>
+
+            <div class="mt-4">
+                <x-label for="photo" value="{{ __('Photo') }}" />
+                <x-input id="photo" class="block mt-1 w-full" type="file" name="photo" />
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
